@@ -24,13 +24,13 @@ func TestQueryParser(t *testing.T) {
 		{
 			"$and": [
 				{
-					"color": {
-						"$eq": "\"Grey\""
+					"name": {
+						"$ne": "\"john\""
 					}
 				},
 				{
-					"salary": {
-						"$gt": "0"
+					"age": {
+						"$lt": "60"
 					}
 				}
 			]
@@ -38,13 +38,13 @@ func TestQueryParser(t *testing.T) {
 		{
 			"$and": [
 				{
-					"age": {
-						"$lt": "60"
+					"salary": {
+						"$gt": "0"
 					}
 				},
 				{
-					"name": {
-						"$ne": "\"john\""
+					"color": {
+						"$eq": "\"Grey\""
 					}
 				}
 			]
@@ -72,29 +72,29 @@ func TestQueryParser2(t *testing.T) {
 	expected := `{
 	"$or": [
 		{
-			"$and": [
+			"$or": [
 				{
-					"color": {
-						"$eq": "\"Grey\""
+					"name": {
+						"$ne": "\"john\""
 					}
 				},
 				{
-					"salary": {
-						"$gt": "0"
+					"age": {
+						"$lt": "60"
 					}
 				}
 			]
 		},
 		{
-			"$or": [
+			"$and": [
 				{
-					"age": {
-						"$lt": "60"
+					"salary": {
+						"$gt": "0"
 					}
 				},
 				{
-					"name": {
-						"$ne": "\"john\""
+					"color": {
+						"$eq": "\"Grey\""
 					}
 				}
 			]
@@ -122,23 +122,23 @@ func TestQueryParser3(t *testing.T) {
 	expected := `{
 	"$or": [
 		{
+			"name": {
+				"$ne": "\"john\""
+			}
+		},
+		{
 			"$and": [
-				{
-					"color": {
-						"$eq": "\"Grey\""
-					}
-				},
 				{
 					"salary": {
 						"$gt": "0"
 					}
+				},
+				{
+					"color": {
+						"$eq": "\"Grey\""
+					}
 				}
 			]
-		},
-		{
-			"name": {
-				"$ne": "\"john\""
-			}
 		}
 	]
 }`

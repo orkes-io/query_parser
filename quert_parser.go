@@ -67,8 +67,8 @@ func ConvertEquivalentMongoQuery(tokens []string) map[string]any {
 
 	for _, token := range postfixTokens {
 		if IsLogicalOperator(token) {
-			operand1 := evaluationStack.Pop()
 			operand2 := evaluationStack.Pop()
+			operand1 := evaluationStack.Pop()
 			evaluationStack.Push(map[string]any{
 				ConvertEquivalentMongoOperator(token): []map[string]any{
 					operand1, operand2,
